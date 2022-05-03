@@ -1,0 +1,308 @@
+---
+title: "Introducción a R "
+subtitle: "Aplicaciones a la enseñanza de la Estadística"
+author: "IV - Encuentro Colombiano de Educación Estocástica"
+institute: "ACEdEst"
+date: "2021-05-31"
+output:
+    xaringan::moon_reader:
+      css: ["default","ki-fonts","duke-blue"]
+      nature:
+        highighStyle: github
+        highlighLine: true
+        countIncrementalSlides : true
+        ratio: '16:9'
+---
+
+```{r setup, include=FALSE}
+
+library(xaringanthemer)
+style_mono_light(base_color ="#383C69")
+#2c5697") # color institucional puj  
+#"#23395b") # color verde militar
+
+```
+
+class: center
+.pull-left[ 
+# IV - Encuentro 
+# Colombiano de 
+# Educación Estocástica </p>
+<img src="img/ACEdEstad.jpeg" width="350">
+]
+.pull-right[
+# Introducción a R 
+### con apliaciones a la enseñanza 
+### de la Estadística 
+
+**Daniel Enrique González Gómez**
+
+*******
+<img src="img/ACEdEstad1.jpeg" width="250"></br>
+<img src="img/escuela.jpeg" width="150">
+<img src="img/uis.png" width="120">
+<img src="img/distrital.png" width="100">
+<img src="img/pedagogica.png" width="100">
+<img src="img/libertadores.png" width="150">
+<img src="img/unitolima.png" width="68">
+<img src="img/unicauca.png" width="60">
+<img src="img/amazonia.png" width="100">
+]
+---
+# Agenda
+
+### Dia 1 : Introducción a <img src="img/R_logo.svg.png" width="50">
+
+### Dia 2 : <img src="img/R_logo.svg.png" width="50"> apoyo a la enseñanza de la Estadística
+
+### Dia 3 :<img src="img/R_logo.svg.png" width="50"> apoyo a las labores de docencia e investigación
+
+---
+## Contexto
+```{r echo = FALSE}
+# remotes::install_github("gadenbuie/xaringanExtra")
+xaringanExtra::use_panelset()
+```
+.panelset[
+  .panel[.panel-name[Comunicación]
+  ### La forma de comunicarnos cambia de manera acelerada
+  <img src="img/comunicacion1.jpg" width="400">
+  <img src="img/comunicacion2.jpg" width="400">]
+  
+  .panel[.panel-name[Aprendizaje]
+  ### Aprendemos haciendo
+  <img src="img/aprender1.jpg" width="263"> 
+    <img src="img/aprender2.jpg" width="290"> 
+     <img src="img/guitarra.jpg" width="290">]
+    
+.panel[.panel-name[Tecnología]
+### Las herramientas tecnológicas son una ayuda, no un propósito
+<img src="img/tecnologia1.jpg" width="400">
+<img src="img/tecnologia2.png" width="380">
+  ]
+.panel[.panel-name[Ayer-Hoy]
+ ###  
+<img src="img/liz.jpg" width="345">
+### Liz Reisberg 
+**“La nueva dinámica del aula: la Enseñanza y el Aprendizaje para los millennials”** (jun/2018)
+
++ No podemos criar a nuestros hijos, como nos criaron a nosotros...
++ Hay que hacer la pregunta clave... 
+
+    ]  
+.panel[.panel-name[Enseñanza]
+### Una metodología de enseñanza-aprendizaje definida y clara
+
+<img src="img/aulainvertida.jpeg" width="500">
+
+* https://medium.com/@gabriela.solera05/el-aula-invertida-en-ingl%C3%A9s-flipped-classroom-es-una-modalidad-de-blended-learning-aprendizaje-86170628d95b  
+
+]  
+.panel[.panel-name[Met.Estadistica]
+<html>
+<div class="container-wrapper-genially" style="position: relative; min-height: 400px; max-width: 100%;"><video class="loader-genially" autoplay="autoplay" loop="loop" playsinline="playsInline" muted="muted" style="position: absolute;top: 45%;left: 50%;transform: translate(-50%, -50%);width: 80px;height: 80px;margin-bottom: 10%"><source src="https://static.genial.ly/resources/panel-loader-low.mp4" type="video/mp4" />Your browser does not support the video tag.</video><div id="5f1ba8da1829700da368b4ab" class="genially-embed" style="margin: 0px auto; position: relative; height: auto; width: 100%;"></div></div><script>(function (d) { var js, id = "genially-embed-js", ref = d.getElementsByTagName("script")[0]; if (d.getElementById(id)) { return; } js = d.createElement("script"); js.id = id; js.async = true; js.src = "https://view.genial.ly/static/embed/embed.js"; ref.parentNode.insertBefore(js, ref); }(document));</script>
+</html>
+] 
+.panel[.panel-name[PyE]
+<html>
+<div class="container-wrapper-genially" style="position: relative; min-height: 400px; max-width: 100%;"><video class="loader-genially" autoplay="autoplay" loop="loop" playsinline="playsInline" muted="muted" style="position: absolute;top: 45%;left: 50%;transform: translate(-50%, -50%);width: 80px;height: 80px;margin-bottom: 10%"><source src="https://static.genial.ly/resources/panel-loader-low.mp4" type="video/mp4" />Your browser does not support the video tag.</video><div id="5f2ae96b94d21c0d831cdb4c" class="genially-embed" style="margin: 0px auto; position: relative; height: auto; width: 100%;"></div></div><script>(function (d) { var js, id = "genially-embed-js", ref = d.getElementsByTagName("script")[0]; if (d.getElementById(id)) { return; } js = d.createElement("script"); js.id = id; js.async = true; js.src = "https://view.genial.ly/static/embed/embed.js"; ref.parentNode.insertBefore(js, ref); }(document));</script>
+</html>
+  ]  
+]
+---
+## **Que es R** 
+
+.pull-left[ 
++ Es un lenguaje para la computación  estadística
+
+   + Licencia (GNU GPL)  abierta y gratis
+   
+   + Creciente popularidad en ciencia de datos
+
+   + Multipalataforma (UNIX, Windows, MacOS)
+
+   + Ross Ihaka y Robert Gentieman (U.Auckland - Nueva Zelanda) 1993
+
+   + Lenguaje multiparadigma
+   
+   + Código construido en C y Fortran
+   
+   + Gran comunidad muy activa 
+   
+   + Mas de 7000 paquetes 
+
+https://www.r-project.org/
+]
+.pull-right[
+<img src="img/R1.jpeg" width="400">
+]
+
+---
+## Lenguajes utilizados en ciencia de datos 
+
+<img src="img/lenguajes.png" width="600">
+
+.footnote[[*] Tomada de: https://mappinggis.com/2019/07/lenguajes-de-programacion-para-realizar-ciencia-de-datos/]
+
+---
+## R y RStudio
+<img src="img/Rt.png" width="340">
+<img src="img/RStudio1.png" width="700">
+
+---
+## R online
+.pull-left[ 
+<img src="img/rdrr_snippets.png" width="300">
+https://rdrr.io/snippets/
+]
+
+.pull-right[
+<img src="img/myCompiler.png" width="400">
+https://www.mycompiler.io/online-r-compiler
+
+
+<img src="img/Rapp.png" width="100">
+]
+---
+## RStudio
+
+<img src="img/VRStudio.png" width="800"></br>
+1.Fuente/  2.Consola/  3.Ambiente/  4.Archivos/ 5.Graficos/ 6.Paquetes/ 7.Ayudas
+
+---
+## Instalación R y RStudio
+
+.pull-left[ 
+<img src="img/R.jpeg" width="100">
+
+https://www.r-project.org/
+]
+
+.pull-right[
+<img src="img/RStudio.jpeg" width="100">
+
+https://www.rstudio.com/products/rstudio/download/
+]
+
+**Descargar e instalar R y RStudio**
+
+https://www.youtube.com/watch?v=Nmu4WPdJBRo
+
+Rafa Gonzalez
+
+---
+## Ayuda
+
+```{r tidy=FALSE, eval=FALSE}
+?pie  # abre la ventana de ayudas
+```
+
+```{r tidy=FALSE, eval=FALSE}
+example(pie) # muestra ejemplos de la funcion
+```
+
+```{r tidy=FALSE, eval=FALSE}
+help.start()
+```
+
+ <img src="img/google.png" width="150">
+---
+
+### RStudio  cheatsheets
+
+<img src="img/string.png" width="650">
+
+.footnote[[*] https://www.rstudio.com/resources/cheatsheets/]
+
+
+
+---
+## Tipos de datos
+
+.pull-left[ 
++ **Vectores** : arreglo unidimensional
+
+```{r tidy=FALSE, eval=TRUE}
+x=c(1,2,3,4,5)         #<<
+```
+
++ **Matrices**  : arreglo bidimensional
+```{r tidy=FALSE}
+x=1:9
+m=matrix(x,nrow=3)   #<<
+```
+]
+
+.pull-right[
+
++ **Arrays**  : arreglos multimensionales 
+```{r tidy=FALSE}
+x=1:9
+y=10:19
+mn=array(c(x,y),dim=c(3,3,2)) #<<
+```
+
++ **Factores**  : vector de variables categóricas 
+```{r tidy=FALSE, eval=TRUE}
+x=letters[1:3]
+y=rep(x, times=3)
+z=rep(x, each = 3)
+```
+
+]
+---
+## Tipos de datos
+
++ **Listas** : colección de objetos cada uno de tipos diferentes
+```{r tidy=FALSE, eval=FALSE}
+h=hist(rnorm(100)) #<<
+```
+
++ **Data Frames** : estructura de datos de dos dimensiones - filas y columnas - base de datos
+```{r tidy=FALSE, eval=FALSE}
+data=data(iris) #<<
+```
+
++ **Funciones**
+```{r tidy=FALSE, eval=FALSE}
+fx=function(x){1/(x-1)^2} #<<
+fx(100)
+```
+
+---
+## Resumen
+<img src="img/tabla1.png" width="900">
+
+.footnote[[*] Tomado de  R para principiantes]
+---
+
+## Operadores 
+
+<img src="img/tabla2.png" width="900">
+
+.footnote[[*] Tomado de  R para principiantes]
+---
+# Actividad 
+
+### **Instalación de R y RStudio** : 
++ [\href{https://www.r-project.org/](R CRAN) 
+
++ [https://rstudio.com/products/rstudio/download/](RStudio).
+
+---
+## Créditos
+ 
++ Imagenes
+    + https://pixabay.com/es/images/
+    + https://medium.com/@gabriela.solera05/el-aula-invertida-en-ingl%C3%A9s-flipped-classroom-es-una-modalidad-de-blended-learning-aprendizaje-86170628d95b
+
++ R para principiantes, J.A. Ahumada (2003)
++ The Book R, T.M. Davies (2016)
++ R para profesionales de los datos, C.J. Gil Vellosta (2018) 
++ Beginning Data Science with R , M. A. Pathak (2014)
++ R for Data Science - H.Wickham - G. Grolemund (2016)
+---
+class: inverse, center, middle
+
+# Práctica 
+

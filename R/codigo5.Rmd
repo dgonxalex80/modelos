@@ -1,0 +1,100 @@
+---
+title: "Simulacion"
+author: "dgonzalez"
+date: '2022-05-03'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, comment = NA)
+library(psych)
+library(summarytools)
+
+# colores
+c0="#0DA5A6" # VERDE CLARO
+c1="#E77C00" # NARANJA
+c2="#6666FF" # AZUL  
+c3="#4CBFBA" # VERDE CLARO  
+c4="#E09600" # AMARILLO  
+c5="#BC2B6A" # MORADO  
+
+```
+
+
+# **Método de Montecarlo**  
+
+Es un método no determinista o estadístico numérico, usado para aproximar expresiones matemáticas complejas y costosas de evaluar con exactitud. El método se llamó así en referencia al Casino de Montecarlo (Mónaco) por ser “la capital del juego de azar”, al ser la ruleta un generador simple de números aleatorios. El nombre y el desarrollo sistemático de los métodos de Montecarlo datan aproximadamente de 1944 y se mejoraron enormemente con el desarrollo de la computadora.  
+
+El uso de los métodos de Montecarlo como herramienta de investigación, proviene del trabajo realizado en el desarrollo de la bomba atómica durante la Segunda Guerra Mundial en el Laboratorio Nacional de Los Álamos en EE. UU. Este trabajo conllevaba la simulación de problemas probabilísticos de hidrodinámica concernientes a la difusión de neutrones en el material de fisión. Esta difusión posee un comportamiento eminentemente aleatorio.	
+(tomado de Wikipedia) 
+
+Como ejemplo se presentan los siguientes problemas tomados de Navidi.
+
+<br/><br/>
+
+## **Problema** 
+
+Se fabrican placas rectangulares cuyas longitudes en pulgadas se distribuyen como $N(2.0; 0.01)$ y cuyos anchos se distribuyen $N(3.0; 0.04)$. Suponga que las longitudes y los anchos son independientes. El área de una placa esta dada por $A=XY$.
+
+![](lamina.png) 
+
+a. Utilice una muestra simulada de tamaño $1000$ para estimar la media y la varianza de $A$.
+
+b. Estime la probabilidad de que $P(5.9 <A<6.1)$.
+
+c. Construya una gráfica de distribución normal $(qqplot)$ para el área. ¿El área de una placa sigue una distribución normal? 
+
+Problema 3 capitulo 4 Navidi(2006) 
+
+<br/>
+
+**Solución**
+
+```{r}
+	X2=rnorm(1000,mean=2.0,sd=0.1)    #  generación de números aleatorios  de X
+	Y2=rnorm(1000,mean=3.0,sd=0.2)    #  generación de números aleatorios  de Y
+	Z2=data.frame(X2,Y2)              #  generación de matriz de X,Y
+	A2=apply(Z2,1,prod)               #  área de la placa A=XY
+	mediaA=mean(A2)                   #  media del vector de áreas 
+	varianzaA=var(A2)                 #  varianza del vector de áreas 
+	B2=as.numeric(A2>5.9 & A2<6.1)    #  generación de variable de 0,1. Con valor de 1 cundo se cumple la condición y cero en otros casos
+	Pro3c=sum(B2)/1000                #  calculo de la  probabilidad 
+	hist(A2)                          # histograma del valor de las áreas
+	qqnorm(A2)                        # gráfico de normalidad del área
+```
+
+```{r}
+summarytools::descr(A2)
+```
+
+<br/><br/>
+
+## **Código R**
+
+*modelo*            |  $F(x)$  |  $X_{p}$ |  $f(x)$  | aleatorio   |
+--------------------|----------|----------|----------|-------------|
+binomial            | pbinom   | qbinom   | dbinom   | rbinom      |
+gometrico           | pgeom    | qgeom    | dgeom    | rgeom       |       
+hipergeometrico     | phyper   | qhyper   | dhyper   | rhyper      |
+Poisson             | ppois    | qpois    | dpois    | rpois       |
+binomial negativo   | pnbinom  | qnbinom  | dnbionom | rnbinom     |      
+beta                | pbeta    | qbeta    | dbeta    | rbeta       |
+Cauchy              | pcauchy  | qcauchy  | dcauchy  | rcauchy     |
+exponencial         | pexp     | qexp     | dexp     | rexp        |
+gamma               | pgamma   | qgamma   | dgamma   | rgamma      |
+lognormal           | plnorm   | qlnorm   | dlnorm   | rlnorm      |
+uniforme            | punif    | qunif    | dunif    | runif       |
+Weibull             | pweibull | qweibull | dweibull | rweibull    |
+t-Student           | pt       | qt       | dt       | rt          |
+Ji-cuadrado         | pchisq   | qchisq   | dchisq   | rchisq      |
+F                   | pf       | qf       | df       | rf          |
+
+<br/><br/>
+|          |                                           |
+|:--------:|:------------------------------------------|
+|	p        | función de distribución acumulada $F(x)$  |
+|	q        | percentil                                 |  
+|	d        | densidad de probabilidad $P(X=x)$         |
+|	r        | variable aleatoria                        |
+
+

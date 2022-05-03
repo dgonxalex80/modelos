@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introducción a R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="IV - Encuentro Colombiano de Educación Estadística" />
+    <meta name="date" content="2021-05-31" />
+    <script src="Presentacion1_files/header-attrs/header-attrs.js"></script>
+    <link href="Presentacion1_files/remark-css/default.css" rel="stylesheet" />
+    <link href="Presentacion1_files/remark-css/ki-fonts.css" rel="stylesheet" />
+    <link href="Presentacion1_files/remark-css/duke-blue.css" rel="stylesheet" />
+    <link href="Presentacion1_files/panelset/panelset.css" rel="stylesheet" />
+    <script src="Presentacion1_files/panelset/panelset.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introducción a R
+## Aplicaciones a la enseñanza de la Estadística
+### IV - Encuentro Colombiano de Educación Estadística
+### Daniel Enrique González Gómez
+### 2021-05-31
+
+---
+
+
+
+
+
+# Agenda
+
+### Dia 1 : Introducción a &lt;img src="R_logo.svg.png" width="50"&gt;
+
+### Dia 2 : &lt;img src="R_logo.svg.png" width="50"&gt; apoyo a la enseñanza de la Estadística
+
+### Dia 3 :&lt;img src="R_logo.svg.png" width="50"&gt; apoyo a las labores de docencia e investigación
+
+---
+## Contexto
+
+.panelset[
+  .panel[.panel-name[Comunicación]
+  ### La forma de comunicarnos cambia de manera acelerada
+  &lt;img src="comunicacion1.jpg" width="400"&gt;
+  &lt;img src="comunicacion2.jpg" width="400"&gt;]
+  
+  .panel[.panel-name[Aprendizaje]
+  ### Aprendemos haciendo
+  &lt;img src="aprender1.jpg" width="400"&gt; 
+    &lt;img src="aprender2.jpg" width="450"&gt; ]
+.panel[.panel-name[Tecnología]
+### Las herramientas tecnologicas son una ayuda, no un propósito
+&lt;img src="tecnologia1.jpg" width="400"&gt;
+&lt;img src="tecnologia2.png" width="380"&gt;
+  ]
+.panel[.panel-name[Ayer-Hoy]
+ ###  
+&lt;img src="papayyo.png" width="400"&gt;
+&lt;img src="yoehijos.jpg" width="500"&gt;
+    ]  
+.panel[.panel-name[Enseñanza]
+### Una metodología de enseñanza-aprendizaje definida y clara
+&lt;img src="aulainvertida.jpeg" width="600"&gt;
+]  
+.panel[.panel-name[Met.Estadistica]
+&lt;html&gt;
+&lt;div class="container-wrapper-genially" style="position: relative; min-height: 400px; max-width: 100%;"&gt;&lt;video class="loader-genially" autoplay="autoplay" loop="loop" playsinline="playsInline" muted="muted" style="position: absolute;top: 45%;left: 50%;transform: translate(-50%, -50%);width: 80px;height: 80px;margin-bottom: 10%"&gt;&lt;source src="https://static.genial.ly/resources/panel-loader-low.mp4" type="video/mp4" /&gt;Your browser does not support the video tag.&lt;/video&gt;&lt;div id="5f1ba8da1829700da368b4ab" class="genially-embed" style="margin: 0px auto; position: relative; height: auto; width: 100%;"&gt;&lt;/div&gt;&lt;/div&gt;&lt;script&gt;(function (d) { var js, id = "genially-embed-js", ref = d.getElementsByTagName("script")[0]; if (d.getElementById(id)) { return; } js = d.createElement("script"); js.id = id; js.async = true; js.src = "https://view.genial.ly/static/embed/embed.js"; ref.parentNode.insertBefore(js, ref); }(document));&lt;/script&gt;
+&lt;/html&gt;
+] 
+.panel[.panel-name[PyE]
+&lt;html&gt;
+&lt;div class="container-wrapper-genially" style="position: relative; min-height: 400px; max-width: 100%;"&gt;&lt;video class="loader-genially" autoplay="autoplay" loop="loop" playsinline="playsInline" muted="muted" style="position: absolute;top: 45%;left: 50%;transform: translate(-50%, -50%);width: 80px;height: 80px;margin-bottom: 10%"&gt;&lt;source src="https://static.genial.ly/resources/panel-loader-low.mp4" type="video/mp4" /&gt;Your browser does not support the video tag.&lt;/video&gt;&lt;div id="5f2ae96b94d21c0d831cdb4c" class="genially-embed" style="margin: 0px auto; position: relative; height: auto; width: 100%;"&gt;&lt;/div&gt;&lt;/div&gt;&lt;script&gt;(function (d) { var js, id = "genially-embed-js", ref = d.getElementsByTagName("script")[0]; if (d.getElementById(id)) { return; } js = d.createElement("script"); js.id = id; js.async = true; js.src = "https://view.genial.ly/static/embed/embed.js"; ref.parentNode.insertBefore(js, ref); }(document));&lt;/script&gt;
+&lt;/html&gt;
+  ]  
+]
+---
+## **Que es R** 
+
+.pull-left[ 
++ Es un lenguaje para la computación  estadística
+
+   + Licencia (GNU GPL)  abierta y gratis
+   
+   + Creciente popularidad en ciencia de datos
+
+   + Multipalataforma (UNIX, Windows, MacOS)
+
+   + Ross Ihaka y Robert Gentieman (U.Auckland - Nueva Zelanda) 1993
+
+   + Lenguaje multiparadigma
+   
+   + Codigo construido en C y Fortran
+   
+   + Gran comunidad muy activa 
+   
+   + Mas de 7000 paquetes 
+
+https://www.r-project.org/
+]
+.pull-right[
+&lt;img src="R1.jpeg" width="400"&gt;
+]
+
+---
+## Lenguajes utilizados en ciencia de datos 
+
+&lt;img src="lenguajes.png" width="600"&gt;
+
+.footnote[[*] Tomada de: https://mappinggis.com/2019/07/lenguajes-de-programacion-para-realizar-ciencia-de-datos/]
+
+---
+## R y RStudio
+&lt;img src="Rt.png" width="340"&gt;
+&lt;img src="RStudio1.png" width="700"&gt;
+
+---
+## R online
+.pull-left[ 
+&lt;img src="rdrr_snippets.png" width="300"&gt;
+https://rdrr.io/snippets/
+]
+
+.pull-right[
+&lt;img src="myCompiler.png" width="400"&gt;
+https://www.mycompiler.io/online-r-compiler
+
+
+&lt;img src="Rapp.png" width="100"&gt;
+]
+---
+## RStudio
+
+&lt;img src="VRStudio.png" width="800"&gt;&lt;/br&gt;
+1.Fuente/  2.Consola/  3.Ambiente/  4.Archivos/ 5.Graficos/ 6.Paquetes/ 7.Ayudas
+
+---
+## Instalación R y RStudio
+
+.pull-left[ 
+&lt;img src="R.jpeg" width="100"&gt;
+
+https://www.r-project.org/
+]
+
+.pull-right[
+&lt;img src="RStudio.jpeg" width="100"&gt;
+
+https://www.rstudio.com/products/rstudio/download/
+]
+
+Descargar e instalar R y RStudio
+
+https://www.youtube.com/watch?v=Nmu4WPdJBRo
+
+---
+## Ayuda
+
+
+```r
+?pie  # abre la ventana de ayudas
+```
+
+
+```r
+example(pie) # muestra ejemplos de la funcion
+```
+
+
+```r
+help.start()
+```
+
+ &lt;img src="google.png" width="150"&gt;
+---
+
+### RStudio  cheatsheets
+
+&lt;img src="string.png" width="650"&gt;
+
+.footnote[[*] https://www.rstudio.com/resources/cheatsheets/]
+
+
+
+---
+## Tipos de datos
+
+.pull-left[ 
++ **Vectores** : arreglo unidimensional
+
+
+```r
+x=c(1,2,3,4,5)         #&lt;&lt;
+```
+
++ **Matrices**  : arreglo bidimensional
+
+```r
+x=1:9
+m=matrix(x,nrow=3)   #&lt;&lt;
+```
+]
+
+.pull-right[
+
++ **Arrays**  : arreglos multimensionales 
+
+```r
+x=1:9
+y=10:19
+mn=array(c(x,y),dim=c(3,3,2)) #&lt;&lt;
+```
+
++ **Factores**  : vector de variables categóricas 
+
+```r
+x=letters[1:3]
+y=rep(x, times=3)
+z=rep(x, each = 3)
+```
+
+]
+---
+## Tipos de datos
+
++ **Listas** : colección de objetos cada uno de tipos diferentes
+
+```r
+h=hist(rnorm(100)) #&lt;&lt;
+```
+
++ **Data Frames** : estructura de datos de dos dimensiones - filas y columnas - base de datos
+
+```r
+data=data(iris) #&lt;&lt;
+```
+
++ **Funciones**
+
+```r
+fx=function(x){1/(x-1)^2} #&lt;&lt;
+fx(100)
+```
+
+---
+## Resumen
+&lt;img src="tabla1.png" width="900"&gt;
+
+.footnote[[*] Tomado de  R para principiantes]
+---
+
+## Operadores 
+
+&lt;img src="tabla2.png" width="900"&gt;
+
+.footnote[[*] Tomado de  R para principiantes]
+---
+# Actividad 
+
+Instalación de R y RStudio** : 
++ [\href{https://www.r-project.org/](R CRAN) 
+
++[https://rstudio.com/products/rstudio/download/](RStudio).
+
+---
+## Creditos
+ 
++ Imagenes
+    + https://pixabay.com/es/images/
+    + https://medium.com/@gabriela.solera05/el-aula-invertida-en-ingl%C3%A9s-flipped-classroom-es-una-modalidad-de-blended-learning-aprendizaje-86170628d95b
+
++ R para principiantes, J.A. Ahumada (2003)
++ The Book R, T.M. Davies (2016)
++ R para profesionales de los datos, C.J. Gil Vellosta (2018) 
++ Beginning Data Science with R , M. A. Pathak (2014)
++ R for Data Science - H.Wickham - G. Grolemund (2016)
+---
+class: inverse, center, middle
+
+# Práctica 
+
+---
+class: center
+.pull-left[ 
+# IV - Encuentro 
+# Colombiano de 
+# Educación Estadística &lt;/p&gt;
+&lt;img src="ACEdEstad.jpeg" width="350"&gt;
+]
+.pull-right[
+# Introducción a R 
+### con apliaciones a la enseñanza 
+### de la Estadística 
+
+&lt;img src="ACEdEstad1.jpeg" width="250"&gt;&lt;/br&gt;
+&lt;img src="escuela.jpeg" width="150"&gt;
+&lt;img src="uis.png" width="120"&gt;
+&lt;img src="pedagogica.png" width="100"&gt;
+&lt;img src="libertadores.png" width="150"&gt;
+&lt;img src="unitolima.png" width="65"&gt;
+&lt;img src="unicauca.png" width="60"&gt;
+&lt;img src="amazonia.png" width="100"&gt;
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highighStyle": "github",
+"highlighLine": true,
+"countIncrementalSlides": true,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

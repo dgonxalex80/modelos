@@ -1,0 +1,146 @@
+---
+title: "Introducción a R "
+subtitle: "Aplicaciones a la enseñanza de la Estadística"
+author: "apoyo a labores de docencia e investigación"
+institute: "Daniel Enrique González Gómez"
+date: "2021"
+output:
+   xaringan::moon_reader:
+      css: ["default","ki-fonts","duke-blue"]
+      nature:
+        highighStyle: github
+        highlighLine: true
+        countIncrementalSlides : true
+        ratio: 16:9
+        header-includes:
+          - \usepackage{pdfpages}
+---
+## Herramientas de trabajo
+ <img src="img/conque.png" width="900">
+
+---
+### Es posible hacer todo junto
+ + Hacer la parte escrita
+ + Realizar los procesos de computo - cuadros - graficos - resultados
+ + <img src="img/nocopypaste.png" width="60">
+ + Actualizarlos documentos con un clik
+ + Replicar los informes
+ 
+ <img src="img/RMarkdownFlow.png" width="600">
+---
+ <img src="img/rmarkdown_universe.jpg" width="900">
+ 
+.footnote[[*] Tomado de: https://ulyngs.github.io/rmarkdown-workshop-2019/slides/Day1.html#1 ]
+---
+.pull-left[ 
+# <img src="img/Rmd.jpeg" width="100">
+
+### Que es 
+<img src="img/queesRmd.png" width="400">
+]
+
+.pull-right[
+
+### Que podemos hacer 
+<img src="img/quehacerRmd.png" width="400">
+]
+
+---
+
+# Trabajaremos 
+
+### * Informes
+
+### * Presentaciones
+
+### * Tableros
+
+### * Libros
+<img src="img/rmarkdown.jpeg" width="150">
+<img src="img/knitr.png" width="150">
+<img src="img/xaringan1.png" width="150">
+<img src="img/flexdashboard.png" width="150">
+<img src="img/bookdown.png" width="150">
+---
+<img src="img/Rmd1.png" width="930">
+---
+<img src="img/Rmd2.png" width="930">
+---
+## Cuadernos
+
+<img src="img/notebook.png" width="800">
+
+.footnote[[*] Tomado de: https://rmarkdown.rstudio.com/lesson-10.html]
+
+---
+## Tableros
+
+
+<img src="img/tablero1.png" width="900">
+
+.footnote[[*] Tomado de: https://beta.rstudioconnect.com/jjallaire/htmlwidgets-highcharter/htmlwidgets-highcharter.html]
+
+---
+## Presentaciones
+<img src="img/xaringan.png" width="1000">
+
+---
+## Libros - notas de clase
+<img src="img/libro3.jpg" width="300">
+<img src="img/bookdown.png" width="100">
+
+.footnote[[*] https://bookdown.org/yihui/bookdown/]
+
+
+---
+Markdown Cheat Sheet
+https://www.markdownguide.org/cheat-sheet/
+
+Guia RMarkdown
+https://markdown-guide.readthedocs.io/en/latest/
+
+R Markdown Cookbook
+Yihui Xie, Christophe Dervieux, Emily Riederer (2020)
+https://bookdown.org/yihui/rmarkdown-cookbook/
+
+R Markdown: The Definitive Guide
+Yihui Xie, J. J. Allaire, Garrett Grolemund (2021)
+https://bookdown.org/yihui/rmarkdown/
+
+bookdown: Authoring Books and Technical Documents with R Markdown
+Yihui Xie (2021)
+https://bookdown.org/yihui/bookdown/
+
+
+flexdashboard
+https://pkgs.rstudio.com/flexdashboard/index.html
+https://www.paulamoraga.com/book-geospatial/sec-dashboardswithshiny.html
+https://www.paulamoraga.com/book-geospatial/sec-flexdashboard.html
+
+
+articulos
+https://bookdown.org/yihui/rmarkdown/rticles-templates.html
+
+presentaciones
+https://rmarkdown.rstudio.com/lesson-11.html
+https://bookdown.org/yihui/rmarkdown/powerpoint-presentation.html # power point
+https://bookdown.org/yihui/rmarkdown/xaringan-preview.html # xaringan
+http://arm.rbind.io/slides/xaringan.html#1   # xaringan
+https://www.kirenz.com/slides/xaringan-demo-slides.html#6
+
+galeria 
+https://rmarkdown.rstudio.com/gallery.html
+
+Creación de páginas web con R Markdown
+https://www.youtube.com/watch?v=JxsreeFsu8g
+
+---
+class: inverse, center, middle
+
+# Daniel Enrique González Gómez 
+### dgonzalez@javerianacali.edu.co
+### dgonzalez80@ gmail.com
+### https://github.com/dgonzalez80
+
+
+

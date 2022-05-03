@@ -1,0 +1,188 @@
+---
+title: "Modelo1 - regresión lineal"
+author: "dgonzalez"
+date: '2022-05-03'
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE,  # no saca mensajes
+                      warning = FALSE,  # no saca mensajes de peliro
+                      comment = NA)     # no saca ## en las salidas
+
+#install.packages("TeachingSampling")
+library(tidyverse)
+library(TeachingSampling)
+library(psych)
+library(summarytools)
+library(gtools)
+library(ggplot2)
+# colores
+c0="#0DA5A6" # VERDE CLARO
+c1="#E77C00" # NARANJA
+c2="#6666FF" # AZUL
+c3="#4CBFBA" # VERDE CLARO
+c4="#E09600" # AMARILLO
+c5="#BC2B6A" # MORADO
+
+#source(here::here("R", "requirements.R"))
+# leer datos crudos -----
+data <- read_delim(here::here("data/ausentismo.csv"), delim=";")
+```
+
+## **Regresión Lineal Múltiple**
+
+</br></br>
+
+Se requiere constriur un modelo que explique los dias de ausencia de los trabajadores en función de algunas de sus caracteristicas. Con este fin se recoge la siguiente información
+
+
+```{r, message=FALSE}
+summary(data[,2:7])
+```
+</br></br>
+
+$$ause = \beta_{o}+ \beta_{_{1}} taller + \beta_{_{2}} sexo + \beta_{_{3}} edad + \beta_{_{4}} antg + \beta_{_{5}} sala + u $$
+</br>
+
+Donde :
+</br>
+
++ ausen : ausentismo - dias de ausencia de un trabajador por año
+
++ taller : 1 - si la persona trabaja en el taller; 0 -si no trabaja en el taller
+
++ sexo :  1 - hombre ;  0 - mujer 
+
++ antg : numero de años trabajando en la empresa
+
++ sala : salario del trabajador
+
++ u : errores - variable aleatoria que resume todas las variables no incluidas en el modelo
+
++ $\beta_{o}$ : intercepto. número de dias de ausencia del trabajador que no depende de nunguan de las variables incluidas en el modelo
+
++  $\beta_{i}$ : pendientes. variación del número de dias de ausencia por el incremento de una unidad en la respectiva variable
+
+</br></br>
+
+**Objetivo 1** : estimar el número de dias que una persona se ausente de su trabajo en función de las variables : taller, sexo, antiguedad y, salario 
+
+</br></br>
+
+**Objetivo 2** : estimar la relación existernte entre las variables independientes (taller, sexo, antiguedad, salario) y la variable dependiente (ausentismo), representadas por los $\beta_{i}$
+
+</br></br>
+
+
+```{r, echo=FALSE}
+# importar la data desde formato csv
+library(here)
+library(readr)
+data=read_delim(here::here("data/ausentismo.csv"))
+```
+
+</br></br>
+
+### **Matriz de covarianzas**
+
+```{r}
+cov(data[,2:7]) # matriz de covarianzas
+```
+
+</br></br>
+
+### Matriz de correlaciones
+
+```{r}
+data[c(2,6,7)] %>% 
+  cor() 
+
+# cor(data[c(2,6,7)]) # matriz de correlaciones
+```
+
+</br></br>
+
+### Estimación del modelo
+
+```{r}
+# Estimacion del modelo -----
+attach(data)
+modelo1=lm(ausen ~ taller + sexo + edad + antg + sala , data=data)
+summary(modelo1)
+```
+
+</br></br>
+
+### Diagnóstico del modelo
+
+```{r}
+# diagnostico  del modelo ----
+coefficients(modelo1) # coeficientes estimados
+yhat=fitted(modelo1) # valores estimados
+u=residuals(modelo1) # residuales
+anova(modelo1) # tabla de anova
+vcov(modelo1) # matriz de varianzas covarianza de parametros
+```
+
+</br></br>
+
+### Selección del mejor modelo
+
+```{r}
+# Stepwise Regression ----
+# metodo de eleccion del mejor modelo
+library(MASS)
+modelo2=lm(ausen ~ taller + sexo + edad + antg + sala , data=data)
+step=stepAIC(modelo2, direction="both")
+step$anova # muestra los resultados
+
+
+modelo3=lm(ausen ~ taller + sexo + antg + sala , data=data)
+summary(modelo3)
+
+modelo4=lm(ausen ~ sexo + antg + sala , data=data)
+summary(modelo4)
+```
+
+</br></br>
+
+### Evaluación de los supuestos del modelo
+
+```{r}
+uhat=modelo4$residuals # guarda los residuales
+#-----------------------------------------------------------------
+# Examen de normalidad de errores
+shapiro.test(uhat)
+
+# Supuesto de no autocorrelacion
+# install.packages("lmtest")
+library(lmtest)
+# Prueba de D-W  - autocorrelacion
+# Ho: los erreres no estan autocorrelacionados
+dwtest(modelo4)
+
+# Supuesto de homoscedasticidad
+# Prueba de Goldfeld-Quandt
+# Ho no existe heteroscedasticidad
+gqtest(modelo4)
+
+# Supuesto de correcta especificacion
+# Prueba de especificacion
+# Prueba RESET
+resettest(modelo4, power=2, type="regressor")
+```
+
+</br></br>
+
+### Estimación del modelo final
+
+```{r}
+# estimación del mejor modelo
+modelo5=lm(ausen ~ antg + sala , data=data)
+summary(modelo5)
+
+```
